@@ -84,9 +84,9 @@ python src/detect.py --source 0   # webcam
 
 ---
 
-## 🔗 Demo
+## 🔗 Tài nguyên 
 
-> 🌐 **[Trải nghiệm hệ thống tại đây](https://your-link-here.com)**
+> 🌐 **[Tài liệu ](https://your-link-here.com)**
 
 ---
 
