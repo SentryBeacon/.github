@@ -1,11 +1,12 @@
 <div align="center">
 
-<video src="https://raw.githubusercontent.com/SentryBeacon/.github/main/profile/assets/video.mp4" width="100%" autoplay loop muted playsinline>
+  <video src="https://raw.githubusercontent.com/SentryBeacon/.github/main/profile/assets/video.mp4" width="100%" autoplay loop muted playsinline></video>
 
-  <img src="assets/banner.svg" width="100%" alt="SentryBeacon Banner">
+  <br/>
+
+  <img src="https://raw.githubusercontent.com/SentryBeacon/.github/main/profile/assets/banner.svg" width="100%" alt="SentryBeacon Banner">
 
   <h1>🗼 SentryBeacon — Traffic Vision System</h1>
-
   <p><i>"Smart Vision for Safer Roads – Drive with care, someone is waiting for you."</i> 🛡️</p>
 
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
