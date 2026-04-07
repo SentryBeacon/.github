@@ -1,8 +1,8 @@
 <div align="center">
 
-  <video src="profile/assets/video.mp4" width="100%" autoplay loop muted playsinline></video>
+  <video src="assets/video.mp4" width="100%" autoplay loop muted playsinline></video>
 
-  <img src="profile/assets/banner.svg" width="100%" alt="SentryBeacon Banner">
+  <img src="assets/banner.svg" width="100%" alt="SentryBeacon Banner">
 
   <h1>🗼 SentryBeacon — Traffic Vision System</h1>
 
