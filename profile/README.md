@@ -1,6 +1,6 @@
 <div align="center">
 
-  <video src="assets/video.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://raw.githubusercontent.com/SentryBeacon/.github/main/profile/assets/video.mp4" width="100%" autoplay loop muted playsinline>
 
   <img src="assets/banner.svg" width="100%" alt="SentryBeacon Banner">
 
