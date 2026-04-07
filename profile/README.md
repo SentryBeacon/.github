@@ -1,5 +1,5 @@
 <div align="center">
-
+<video src="profile/assets/video.mp4" width="100%" autoplay loop muted playsinline></video>
 ![SentryBeacon Banner](assets/banner.svg)
 
 # 🗼 SentryBeacon — Traffic Vision System
