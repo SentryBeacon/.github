@@ -20,7 +20,7 @@
 
 ## 📝 Giới thiệu
 
-**SentryBeacon** là hệ thống giám sát giao thông thông minh ứng dụng **Computer Vision** để tự động nhận diện, phân loại phương tiện và đọc biển số xe — giúp giám sát an toàn đường bộ và giảm sai sót do yếu tố con người.
+**SentryBeacon** là hệ thống giám sát giao thông thông minh mục tiêu nhận diện biển số xe và phân loại phương tiện giao thông, phát hiện các hành vi vi phạm như vượt đèn đỏ và đi sai làn.
 
 ---
 
