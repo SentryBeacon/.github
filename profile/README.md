@@ -75,7 +75,6 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 
 **6. OCR Pipeline** — **PaddleOCR / EasyOCR** chỉ được kích hoạt khi `Vi phạm = True`, chuyển ảnh crop biển số thành chuỗi ký tự và lưu vào SQL Server.
 
--
 
 ## 🔗 Tài nguyên
 
