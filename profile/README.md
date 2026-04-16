@@ -44,7 +44,7 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 | Tầng (Layer) | Thành phần xử lý | Chức năng cụ thể |
 |---|---|---|
 | 1. Input Layer | Camera / Video Stream | Tiếp nhận luồng dữ liệu video từ camera giám sát tại ngã tư |
-| 2. Perception Layer | YOLOv8 + ByteTrack | YOLOv8 phát hiện xe (Bbox) và phân loại (Class); ByteTrack gán ID duy nhất để theo dõi quỹ đạo (Trajectory) |
+| 2. Perception Layer | YOLOv8 + SORT Tracker | YOLOv8 phát hiện xe (Bbox) và phân loại (Class); SORT Tracker gán ID duy nhất để theo dõi quỹ đạo (Trajectory) |
 | 3. Logic Layer | Geometry Analysis | Module 2: kiểm tra vạch dừng ảo khi đèn đỏ bật; Module 3: kiểm tra tâm xe trong vùng Polygon làn đường |
 | 4. Output Layer | OCR & Database | Kích hoạt OCR nhận diện biển số khi `Vi phạm = True`; lưu bằng chứng vào SQL Server |
 
@@ -52,7 +52,7 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 
 ## 🔧 Backend — 3 Module xử lý
 
-| Đặc điểm | Module 1: Nhận diện & Phân loại (`detection_ocr.py`) | Module 2: Vi phạm đèn đỏ (`red_light_logic.py`) | Module 3: Đi sai làn đường (`wrong_lane_logic.py`) |
+| Đặc điểm | Module 1: Nhận diện & Phân loại (`detection_ocr.py`) | Module 2: Vi phạm đèn đỏ (`red_light_logic.py`) | Module 3: Đi sai làn đường (`wrong_lane_detector.py`) |
 |---|---|---|---|
 | **Chức năng chính** | Phát hiện phương tiện; Phân loại (ô tô, xe máy...); Trích xuất biển số xe | Xác định trạng thái đèn; Phát hiện xe vượt vạch dừng | Đối chiếu vị trí xe với làn; Phát hiện xe đi vào làn cấm |
 | **Công nghệ** | YOLOv8 · PaddleOCR / EasyOCR · OpenCV | Point-in-Polygon · Virtual Line (Vạch ảo) · Logic Timer/AI | ROI / Polygon Mapping · Logic Type-check · Spatial Analysis |
@@ -81,7 +81,7 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 
 **1. Object Detection** — Mô hình **YOLOv8m** xác định vị trí bounding box và phân loại phương tiện trong từng frame từ camera giám sát.
 
-**2. ByteTrack / SORT Tracker** — Sử dụng **bộ lọc Kalman** dự đoán quỹ đạo và gán ID duy nhất cho mỗi xe qua các frame liên tiếp.
+**2. SORT Tracker** — Sử dụng **bộ lọc Kalman** dự đoán quỹ đạo và gán ID duy nhất cho mỗi xe qua các frame liên tiếp.
 
 **3. Virtual Line & Polygon Mapping** — Vạch dừng ảo (Module 2) và vùng Polygon làn đường (Module 3) được cấu hình qua Web config, dùng thuật toán **Point-in-Polygon** để xác định vi phạm.
 
@@ -98,7 +98,7 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 ```
 Language   :  Python
 Vision     :  OpenCV · YOLOv8m
-Tracking   :  ByteTrack · SORT (Kalman Filter)
+Tracking   :  SORT (Kalman Filter)
 OCR        :  PaddleOCR · EasyOCR
 ML Backend :  PyTorch
 Database   :  SQL Server
@@ -118,7 +118,7 @@ SentryBeacon/
 ├── src/
 │   ├── detection_ocr.py        ← Module 1: nhận diện & phân loại + OCR biển số
 │   ├── red_light_logic.py      ← Module 2: phát hiện vượt đèn đỏ
-│   ├── wrong_lane_logic.py     ← Module 3: phát hiện đi sai làn đường
+│   ├── wrong_lane_detector.py  ← Module 3: phát hiện đi sai làn đường
 │   └── dashboard/              ← Flask web app (cấu hình vạch, làn đường)
 ├── evidence/
 │   ├── evidence_red/           ← ảnh/video bằng chứng vượt đèn đỏ
@@ -144,7 +144,7 @@ python src/detection_ocr.py --source 0
 python src/red_light_logic.py --source video.mp4
 
 # Chạy phát hiện sai làn đường
-python src/wrong_lane_logic.py --source video.mp4
+python src/wrong_lane_detector.py --source video.mp4
 ```
 
 ---
