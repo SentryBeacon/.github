@@ -108,12 +108,9 @@ Tools      :  Jupyter Notebook · Git LFS
 
 ---
 
-
 ## 🔗 Tài nguyên
 
-> 🌐 **[Tài liệu kỹ thuật ]([https://docs.google.com/spreadsheets/d/1phHyONhdFZIKhnombAalB4u51fuj_C_SVkxX9owVtWA/edit?gid=1565705267#gid=1565705267])**
-
-
+* 🌐 **Tài liệu kỹ thuật:** [Xem tại đây](https://docs.google.com/spreadsheets/d/1phHyONhdFZIKhnombAalB4u51fuj_C_SVkxX9owVtWA/edit?gid=1565705267#gid=1565705267)
 ---
 
 <div align="center">
