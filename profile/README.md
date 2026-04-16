@@ -61,22 +61,6 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 | **Lưu trữ** | Bảng `Vehicles`, `Plates`; Thư mục `crop_plates/` | Bảng `Violations`; Thư mục `evidence_red/` | Bảng `Violations`; Thư mục `evidence_lane/` |
 | **Nhận nhiệm vụ** | Hoàng Thị Hoạt | Đỗ Công Trí | Nguyễn Đức Mạnh |
 
----
-
-## ⚙️ Pipeline Module 3 — Đi sai làn đường
-
-| Giai đoạn | Thành phần chính | Chi tiết kỹ thuật & Logic xử lý |
-|---|---|---|
-| 1. Nhập liệu | Video Stream | Đọc luồng video qua VideoReader đa luồng để không làm tắc nghẽn hàng đợi xử lý |
-| 2. Tiền xử lý | Frame Scaling | Resize khung hình về 960px (INFER_W) để cân bằng giữa độ chính xác và tốc độ FPS |
-| 3. Phát hiện | YOLOv8m AI | Nhận diện phương tiện (Car, Motor, Bus, Truck) và lọc qua NMS với ngưỡng IoU 0.45 |
-| 4. Theo dõi | SORT Tracker | Bộ lọc Kalman dự đoán quỹ đạo và gán ID duy nhất cho từng phương tiện |
-| 5. Phân tích | State Machine | Quản lý vòng đời xe qua 4 trạng thái: `UNSEEN → ENTERING → TRACKING → VIOLATED` |
-| 6. Xác thực | Line Crossing | Kiểm tra va chạm đa điểm (phần dưới xe, tâm xe và 4 góc bbox) với vạch vi phạm |
-| 7. Lưu trữ | Violation Saver | Chụp ảnh toàn cảnh (Scene) và cận cảnh (Crop) khi phát hiện vi phạm, kèm Timestamp |
-
----
-
 ## 🧩 Khái niệm cốt lõi
 
 **1. Object Detection** — Mô hình **YOLOv8m** xác định vị trí bounding box và phân loại phương tiện trong từng frame từ camera giám sát.
@@ -85,28 +69,13 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 
 **3. Virtual Line & Polygon Mapping** — Vạch dừng ảo (Module 2) và vùng Polygon làn đường (Module 3) được cấu hình qua Web config, dùng thuật toán **Point-in-Polygon** để xác định vi phạm.
 
-**4. State Machine** — Vòng đời của mỗi phương tiện được quản lý qua 4 trạng thái: `UNSEEN → ENTERING → TRACKING → VIOLATED`, đảm bảo chỉ ghi nhận vi phạm đúng thời điểm.
+**4. State Machine** — Vòng đời của mỗi phương tiện được quản lý qua 4 trạng thái: `UNSEEN → ENTERING → TRACKING → VIOLATED`, đảm bảo chỉ ghi nhận vi phạm đúng thời đi
 
 **5. IoU & NMS** — Chỉ số **Intersection over Union** kết hợp **Non-Maximum Suppression** (ngưỡng 0.45) loại bỏ các vùng nhận diện trùng lặp, giữ lại kết quả tin cậy nhất.
 
 **6. OCR Pipeline** — **PaddleOCR / EasyOCR** chỉ được kích hoạt khi `Vi phạm = True`, chuyển ảnh crop biển số thành chuỗi ký tự và lưu vào SQL Server.
 
----
-
-## 🛠️ Tech Stack
-
-```
-Language   :  Python
-Vision     :  OpenCV · YOLOv8m
-Tracking   :  SORT (Kalman Filter)
-OCR        :  PaddleOCR · EasyOCR
-ML Backend :  PyTorch
-Database   :  SQL Server
-Backend    :  Flask (Dashboard / Web config)
-Tools      :  Jupyter Notebook · Git LFS
-```
-
----
+-
 
 ## 🔗 Tài nguyên
 
