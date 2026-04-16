@@ -108,51 +108,11 @@ Tools      :  Jupyter Notebook · Git LFS
 
 ---
 
-## 📁 Cấu trúc thư mục
-
-```
-SentryBeacon/
-├── assets/
-│   └── banner.svg              ← banner động README
-├── models/                     ← YOLO weights (Git LFS)
-├── src/
-│   ├── detection_ocr.py        ← Module 1: nhận diện & phân loại + OCR biển số
-│   ├── red_light_logic.py      ← Module 2: phát hiện vượt đèn đỏ
-│   ├── wrong_lane_detector.py  ← Module 3: phát hiện đi sai làn đường
-│   └── dashboard/              ← Flask web app (cấu hình vạch, làn đường)
-├── evidence/
-│   ├── evidence_red/           ← ảnh/video bằng chứng vượt đèn đỏ
-│   ├── evidence_lane/          ← ảnh/video bằng chứng sai làn
-│   └── crop_plates/            ← ảnh biển số đã crop
-├── notebooks/                  ← phân tích dữ liệu (EDA, thực nghiệm)
-└── README.md
-```
-
----
-
-## ⚡ Cài đặt nhanh
-
-```bash
-git clone https://github.com/ducmanh-jr/SentryBeacon.git
-cd SentryBeacon
-pip install -r requirements.txt
-
-# Chạy nhận diện từ webcam
-python src/detection_ocr.py --source 0
-
-# Chạy phát hiện vi phạm đèn đỏ từ video
-python src/red_light_logic.py --source video.mp4
-
-# Chạy phát hiện sai làn đường
-python src/wrong_lane_detector.py --source video.mp4
-```
-
----
 
 ## 🔗 Tài nguyên
 
-> 🌐 **[Tài liệu kỹ thuật chi tiết](https://your-link-here.com)**
-> 📊 **[Dataset & Notebook phân tích](https://your-link-here.com)**
+> 🌐 **[Tài liệu kỹ thuật ]([https://your-link-here.com](https://docs.google.com/spreadsheets/d/1phHyONhdFZIKhnombAalB4u51fuj_C_SVkxX9owVtWA/edit?gid=1565705267#gid=1565705267))**
+
 
 ---
 
