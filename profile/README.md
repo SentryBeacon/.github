@@ -30,7 +30,7 @@
 | # | Tính năng | Mô tả |
 |---|---|---|
 | 🚗 | **Vehicle Detection** | Nhận diện và phân loại phương tiện (ô tô, xe máy, xe tải, xe buýt) theo thời gian thực bằng YOLOv8 |
-| 🔤 | **License Plate Recognition (LPR)** | Trích xuất vùng biển số và OCR ký tự độ chính xác cao bằng PaddleOCR / EasyOCR |
+| 🔤 | **License Plate Recognition (LPR)** | Trích xuất vùng biển số và OCR ký tự độ chính xác cao bằng EasyOCR |
 | 🚦 | **Red Light Violation Detection** | Xác định trạng thái đèn đỏ, phát hiện xe vượt vạch dừng bằng Virtual Line và Point-in-Polygon |
 | 🛣️ | **Wrong Lane Detection** | Đối chiếu vị trí xe với định nghĩa làn đường, phát hiện xe đi vào làn cấm bằng Polygon Mapping |
 | 📦 | **Evidence Storage** | Tự động chụp ảnh toàn cảnh (Scene) và cận cảnh (Crop) khi phát hiện vi phạm, lưu kèm Timestamp |
@@ -55,7 +55,7 @@ Hệ thống gồm **4 tầng xử lý** kết nối tuần tự:
 | Đặc điểm | Module 1: Nhận diện & Phân loại (`detection_ocr.py`) | Module 2: Vi phạm đèn đỏ (`red_light_logic.py`) | Module 3: Đi sai làn đường (`wrong_lane_detector.py`) |
 |---|---|---|---|
 | **Chức năng chính** | Phát hiện phương tiện; Phân loại (ô tô, xe máy...); Trích xuất biển số xe | Xác định trạng thái đèn; Phát hiện xe vượt vạch dừng | Đối chiếu vị trí xe với làn; Phát hiện xe đi vào làn cấm |
-| **Công nghệ** | YOLOv8 · PaddleOCR / EasyOCR · OpenCV | Point-in-Polygon · Virtual Line (Vạch ảo) · Logic Timer/AI | ROI / Polygon Mapping · Logic Type-check · Spatial Analysis |
+| **Công nghệ** | YOLOv8 · EasyOCR · OpenCV | Point-in-Polygon · Virtual Line (Vạch ảo) · Logic Timer/AI | ROI / Polygon Mapping · Logic Type-check · Spatial Analysis |
 | **Đầu vào** | Frame video (giám sát); Ảnh phương tiện (từ Mod 2/3) | Tọa độ xe; Tọa độ vạch dừng (Web config); Trạng thái đèn | Tọa độ + Loại xe; Danh sách tọa độ làn đường; Quy tắc làn (Web config) |
 | **Đầu ra** | Loại xe, tọa độ Bbox; Chuỗi ký tự biển số (String); Video/Ảnh kết quả | Trạng thái vi phạm (True/False); Loại lỗi: "Vượt đèn đỏ"; Video bằng chứng | Trạng thái vi phạm (True/False); Loại lỗi: "Sai làn đường"; Video bằng chứng |
 | **Lưu trữ** | Bảng `Vehicles`, `Plates`; Thư mục `crop_plates/` | Bảng `Violations`; Thư mục `evidence_red/` | Bảng `Violations`; Thư mục `evidence_lane/` |
