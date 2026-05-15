@@ -29,7 +29,7 @@
 
 | # | Tính năng | Mô tả |
 |---|---|---|
-| 🚗 | **Vehicle Detection** | Nhận diện và phân loại phương tiện (ô tô, xe máy, xe tải, xe buýt) theo thời gian thực bằng YOLOv8 |
+| 🚗 | **Vehicle Detection** | Nhận diện và phân loại phương tiện (ô tô, xe máy, xe tải, xe buýt) theo thời gian |
 | 🔤 | **License Plate Recognition (LPR)** | Trích xuất vùng biển số và OCR ký tự độ chính xác cao bằng EasyOCR |
 | 🚦 | **Red Light Violation Detection** | Xác định trạng thái đèn đỏ, phát hiện xe vượt vạch dừng bằng Virtual Line và Point-in-Polygon |
 | 🛣️ | **Wrong Lane Detection** | Đối chiếu vị trí xe với định nghĩa làn đường, phát hiện xe đi vào làn cấm bằng Polygon Mapping |
